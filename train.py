@@ -22,5 +22,5 @@ with mlflow.start_run():
     model.fit(X_train, y_train)
     acc = accuracy_score(y_test, model.predict(X_test))
     mlflow.log_metric("accuracy", acc)
-    mlflow.sklearn.log_model(model, "random_forest_model")
+    mlflow.sklearn.log_model(model, "random_forest_model", skops_trusted_types=["sklearn.tree._tree.Tree"])
     print(f"Accuracy: {acc:.4f}")
